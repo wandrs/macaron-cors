@@ -141,7 +141,7 @@ func CORS(options ...Options) macaron.Handler {
 				}
 				headers["access-control-allow-origin"] = u.String()
 				headers["access-control-allow-credentials"] = strconv.FormatBool(opt.AllowCredentials)
-				headers["vary"] = "Origin"
+				headers["vary"] = "Cookie"
 			}
 			if reqOptions && !ok {
 				respErrorf(ctx, log, http.StatusBadRequest, "CORS request from prohibited domain %v", origin)
