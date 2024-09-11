@@ -150,6 +150,9 @@ func CORS(options ...Options) macaron.Handler {
 		}
 		ctx.Resp.Before(func(w macaron.ResponseWriter) {
 			for k, v := range headers {
+				if k == "vary" && w.Header().Get("vary") != "" {
+					continue
+				}
 				w.Header().Set(k, v)
 			}
 		})
